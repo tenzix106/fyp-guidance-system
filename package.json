@@ -1,26 +1,45 @@
 {
   "name": "fyp-guidance-system",
   "version": "1.0.0",
-  "description": "FYP Guidance System - A Vue.js application for final year project guidance",
-  "type": "module",
+  "description": "FYP Guidance System with Vue.js, PrimeVue, and Flask",
+  "private": true,
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore"
+    "lint": "eslint --ext .js,.vue src",
+    "test": "echo \"No test specified\" && exit 0"
   },
   "dependencies": {
+    "axios": "^1.6.2",
+    "primeflex": "^3.3.1",
+    "primeicons": "^7.0.0",
+    "primevue": "^3.50.0",
     "vue": "^3.4.0",
-    "vue-router": "^4.2.5",
-    "pinia": "^2.1.7",
-    "axios": "^1.6.2"
+    "vue-router": "^4.2.5"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^4.5.2",
-    "vite": "^5.0.8",
-    "eslint": "^8.55.0",
+    "@tailwindcss/vite": "^4.1.14",
+    "@vitejs/plugin-vue": "^5.0.0",
+    "@vue/eslint-config-standard": "^8.0.1",
+    "eslint": "^8.57.0",
     "eslint-plugin-vue": "^9.19.2",
-    "@vue/eslint-config-prettier": "^9.0.0",
-    "prettier": "^3.1.1"
+    "tailwindcss": "^4.1.14",
+    "vite": "^5.0.0"
+  },
+  "browserslist": [
+    "last 10 Chrome versions",
+    "last 10 Firefox versions",
+    "last 4 Edge versions",
+    "last 7 Safari versions",
+    "last 8 Android versions",
+    "last 8 ChromeAndroid versions",
+    "last 10 iOS versions",
+    "last 5 Opera versions"
+  ],
+  "engines": {
+    "node": "^18 || ^16 || ^14",
+    "npm": ">= 6.13.4",
+    "yarn": ">= 1.21.1"
   }
 }

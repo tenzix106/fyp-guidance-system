@@ -1,146 +1,225 @@
 # FYP Guidance System
 
-A comprehensive Vue.js application designed to help students manage and track their Final Year Project (FYP) journey. This system provides project management, progress tracking, and academic guidance features.
+A comprehensive Final Year Project guidance system built with Vue.js, Quasar Framework, and Flask.
 
-## 🚀 Features
+## 🚀 Tech Stack
 
-- **Dashboard**: Overview of project progress, deadlines, and recent activity
-- **Project Management**: Create, track, and manage multiple FYP projects
-- **Progress Tracking**: Visual progress indicators and milestone tracking
-- **Profile Management**: Student profile with academic information and preferences
-- **Responsive Design**: Modern, mobile-friendly interface
-- **Vue 3 Composition API**: Built with the latest Vue.js features
+### Frontend
+- **Vue.js 3** - Progressive JavaScript framework
+- **Quasar Framework** - Vue.js based UI framework
+- **Vite** - Fast build tool and development server
+- **Axios** - HTTP client for API requests
 
-## 🛠️ Tech Stack
-
-- **Frontend**: Vue.js 3 with Composition API
-- **Build Tool**: Vite
-- **Routing**: Vue Router 4
-- **State Management**: Pinia
-- **HTTP Client**: Axios
-- **Styling**: CSS3 with modern features
-- **Linting**: ESLint with Vue.js rules
-
-## 📋 Prerequisites
-
-Before you begin, ensure you have the following installed:
-- Node.js (version 16 or higher)
-- npm or yarn package manager
-
-## 🚀 Getting Started
-
-### 1. Clone the repository
-```bash
-git clone <repository-url>
-cd fyp-guidance-system
-```
-
-### 2. Install dependencies
-```bash
-npm install
-# or
-yarn install
-```
-
-### 3. Start the development server
-```bash
-npm run dev
-# or
-yarn dev
-```
-
-The application will be available at `http://localhost:3000`
-
-### 4. Build for production
-```bash
-npm run build
-# or
-yarn build
-```
-
-### 5. Preview production build
-```bash
-npm run preview
-# or
-yarn preview
-```
+### Backend
+- **Flask** - Lightweight Python web framework
+- **Flask-CORS** - Cross-Origin Resource Sharing support
+- **Python 3.8+** - Programming language
 
 ## 📁 Project Structure
 
 ```
 fyp-guidance-system/
-├── public/                 # Static assets
-├── src/
-│   ├── components/         # Reusable Vue components
-│   ├── views/             # Page components
-│   │   ├── Home.vue       # Landing page
-│   │   ├── Dashboard.vue  # Main dashboard
-│   │   ├── Projects.vue   # Project management
-│   │   └── Profile.vue    # User profile
-│   ├── stores/            # Pinia stores
-│   ├── router/            # Vue Router configuration
-│   ├── assets/            # Images, fonts, etc.
-│   ├── App.vue            # Root component
-│   ├── main.js            # Application entry point
-│   └── style.css          # Global styles
-├── index.html             # HTML template
-├── package.json           # Dependencies and scripts
-├── vite.config.js         # Vite configuration
-└── README.md              # Project documentation
+├── src/                          # Frontend source code
+│   ├── components/               # Vue components
+│   │   └── EssentialLink.vue
+│   ├── layouts/                  # Layout components
+│   │   └── MainLayout.vue
+│   ├── pages/                    # Page components
+│   │   ├── IndexPage.vue
+│   │   ├── Dashboard.vue
+│   │   ├── Projects.vue
+│   │   ├── Profile.vue
+│   │   └── ErrorNotFound.vue
+│   ├── router/                   # Vue Router configuration
+│   │   ├── index.js
+│   │   └── routes.js
+│   ├── boot/                     # Quasar boot files
+│   │   └── axios.js
+│   ├── App.vue                   # Root Vue component
+│   ├── main.js                   # Application entry point
+│   └── quasar-variables.sass     # Quasar theme variables
+├── backend/                      # Backend source code
+│   ├── app.py                    # Flask application
+│   ├── config.py                 # Configuration settings
+│   └── requirements.txt          # Python dependencies
+├── package.json                  # Node.js dependencies
+├── quasar.config.js             # Quasar configuration
+├── vite.config.js               # Vite configuration
+└── README.md                    # This file
 ```
 
-## 🎨 Customization
+## 🛠️ Setup Instructions
 
-### Adding New Pages
-1. Create a new Vue component in `src/views/`
-2. Add the route in `src/main.js`
-3. Update the navigation in `src/App.vue`
+### Prerequisites
 
-### Styling
-- Global styles are in `src/style.css`
-- Component-specific styles use scoped CSS
-- The design system uses CSS custom properties for consistent theming
+- **Node.js** (v16 or higher)
+- **Python** (v3.8 or higher)
+- **npm** or **yarn** package manager
 
-### State Management
-- Pinia stores are located in `src/stores/`
-- Create new stores for different data domains
+### Frontend Setup
 
-## 🔧 Available Scripts
+1. **Install dependencies:**
+   ```bash
+   npm install
+   ```
 
+2. **Start development server:**
+   ```bash
+   npm run dev
+   ```
+   
+   The frontend will be available at `http://localhost:8080`
+
+### Backend Setup
+
+1. **Navigate to backend directory:**
+   ```bash
+   cd backend
+   ```
+
+2. **Create virtual environment (recommended):**
+   ```bash
+   python -m venv venv
+   
+   # On Windows
+   venv\Scripts\activate
+   
+   # On macOS/Linux
+   source venv/bin/activate
+   ```
+
+3. **Install Python dependencies:**
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+4. **Start Flask server:**
+   ```bash
+   python app.py
+   ```
+   
+   The backend API will be available at `http://localhost:5000`
+
+## 🚀 Running the Application
+
+### Development Mode
+
+1. **Start the backend server:**
+   ```bash
+   cd backend
+   python app.py
+   ```
+
+2. **Start the frontend development server (in a new terminal):**
+   ```bash
+   npm run dev
+   ```
+
+3. **Open your browser and navigate to:**
+   ```
+   http://localhost:8080
+   ```
+
+### Production Build
+
+1. **Build the frontend:**
+   ```bash
+   npm run build
+   ```
+
+2. **The built files will be in the `dist/` directory**
+
+## 📚 API Endpoints
+
+### Health Check
+- `GET /api/health` - Check API health status
+
+### Projects
+- `GET /api/projects` - Get all projects
+- `POST /api/projects` - Create a new project
+- `GET /api/projects/{id}` - Get a specific project
+- `PUT /api/projects/{id}` - Update a project
+- `DELETE /api/projects/{id}` - Delete a project
+
+### User Profile
+- `GET /api/user/profile` - Get user profile
+- `PUT /api/user/profile` - Update user profile
+
+### Dashboard
+- `GET /api/dashboard/stats` - Get dashboard statistics
+
+## 🎨 Features
+
+### Frontend Features
+- **Responsive Design** - Works on desktop, tablet, and mobile
+- **Modern UI** - Clean and intuitive interface using Quasar components
+- **Navigation** - Sidebar navigation with multiple pages
+- **Dashboard** - Overview of projects and statistics
+- **Project Management** - Create, view, and manage projects
+- **User Profile** - Profile management and settings
+
+### Backend Features
+- **RESTful API** - Well-structured API endpoints
+- **CORS Support** - Cross-origin requests enabled
+- **Error Handling** - Proper error responses
+- **Data Validation** - Input validation and sanitization
+
+## 🔧 Configuration
+
+### Frontend Configuration
+- **Quasar Config** - `quasar.config.js` for Quasar-specific settings
+- **Vite Config** - `vite.config.js` for build and development settings
+- **ESLint** - `.eslintrc.cjs` for code linting rules
+
+### Backend Configuration
+- **Flask Config** - `backend/config.py` for application settings
+- **Environment Variables** - Use `.env` file for sensitive configuration
+
+## 📦 Available Scripts
+
+### Frontend Scripts
 - `npm run dev` - Start development server
 - `npm run build` - Build for production
-- `npm run preview` - Preview production build
 - `npm run lint` - Run ESLint
+
+### Backend Scripts
+- `python app.py` - Start Flask development server
+
+## 🚀 Deployment
+
+### Frontend Deployment
+1. Build the application: `npm run build`
+2. Deploy the `dist/` folder to your web server
+
+### Backend Deployment
+1. Install production dependencies: `pip install -r requirements.txt`
+2. Use a WSGI server like Gunicorn: `gunicorn -w 4 -b 0.0.0.0:5000 app:app`
 
 ## 🤝 Contributing
 
 1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+2. Create a feature branch: `git checkout -b feature-name`
+3. Commit your changes: `git commit -am 'Add some feature'`
+4. Push to the branch: `git push origin feature-name`
+5. Submit a pull request
 
-## 📝 License
+## 📄 License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+This project is licensed under the MIT License.
 
 ## 🆘 Support
 
 If you encounter any issues or have questions, please:
-1. Check the existing issues on GitHub
-2. Create a new issue with detailed information
-3. Contact the development team
+1. Check the documentation
+2. Search existing issues
+3. Create a new issue with detailed information
 
-## 🎯 Roadmap
+## 🔮 Future Enhancements
 
 - [ ] User authentication and authorization
+- [ ] Database integration (PostgreSQL/MongoDB)
 - [ ] Real-time notifications
-- [ ] File upload and management
-- [ ] Advanced project templates
+- [ ] File upload functionality
+- [ ] Advanced project analytics
+- [ ] Mobile app development
 - [ ] Integration with external APIs
-- [ ] Mobile app version
-- [ ] Advanced analytics and reporting
-
----
-
-**Happy Coding! 🎉**

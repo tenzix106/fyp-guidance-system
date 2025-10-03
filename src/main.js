@@ -1,38 +1,28 @@
 import { createApp } from 'vue'
-import { createPinia } from 'pinia'
-import { createRouter, createWebHistory } from 'vue-router'
+import PrimeVue from 'primevue/config'
+import ToastService from 'primevue/toastservice'
+import ConfirmationService from 'primevue/confirmationservice'
+
+// Import PrimeVue CSS
+import 'primevue/resources/themes/lara-light-blue/theme.css'
+import 'primevue/resources/primevue.min.css'
+import 'primeicons/primeicons.css'
+import 'primeflex/primeflex.css'
+
+// Import boot files
+import axios from './boot/axios'
+
+// Assumes your root component is App.vue
+// and placed in same folder as main.js
 import App from './App.vue'
-import './style.css'
+import router from './router'
 
-// Import views
-import Home from './views/Home.vue'
-import Dashboard from './views/Dashboard.vue'
-import Projects from './views/Projects.vue'
-import Profile from './views/Profile.vue'
-
-// Define routes
-const routes = [
-  { path: '/', name: 'Home', component: Home },
-  { path: '/dashboard', name: 'Dashboard', component: Dashboard },
-  { path: '/projects', name: 'Projects', component: Projects },
-  { path: '/profile', name: 'Profile', component: Profile }
-]
-
-// Create router instance
-const router = createRouter({
-  history: createWebHistory(),
-  routes
-})
-
-// Create Pinia store
-const pinia = createPinia()
-
-// Create Vue app
 const app = createApp(App)
 
-// Use plugins
-app.use(pinia)
+app.use(PrimeVue)
+app.use(ToastService)
+app.use(ConfirmationService)
 app.use(router)
+app.use(axios)
 
-// Mount the app
 app.mount('#app')
