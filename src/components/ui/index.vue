@@ -11,4 +11,6 @@ export { default as CardTitle } from './cardTitle.vue';
 export { default as CardDescription } from './cardDescription.vue';
 export { default as CardContent } from './cardContent.vue';
 export { default as CardFooter } from './cardFooter.vue';
+export { default as Badge } from '../ui/badge.vue';
+export { default as Button } from '../ui/button.vue';
 </script>
