@@ -1,27 +1,23 @@
-<template>
-  <div id="app">
-    <Toast />
-    <ConfirmDialog />
-    <router-view />
-  </div>
-</template>
+<script setup lang="ts">
 
-<script>
-import { defineComponent } from 'vue'
-import Toast from 'primevue/toast'
-import ConfirmDialog from 'primevue/confirmdialog'
+import { VueQueryPlugin, QueryClient } from '@tanstack/vue-query';
+import { TooltipProvider } from '../src/components/ui/index.vue';
+import Toaster from '../src/components/ui/toastViewport.vue';
+import Sonner from '../src/components/ui/sonner.vue';
 
-export default defineComponent({
-  name: 'App',
-  components: {
-    Toast,
-    ConfirmDialog
-  }
-})
+const queryClient = new QueryClient();
 </script>
 
-<style>
-#app {
-  min-height: 100vh;
-}
-</style>
+<template>
+  <VueQueryPlugin :query-client="queryClient">
+    <TooltipProvider>
+      <Toaster>
+      <Sonner>
+
+        <router-view />
+      </Sonner>
+      </Toaster>
+    </TooltipProvider>
+  </VueQueryPlugin>
+</template>
+
