@@ -1,6 +1,6 @@
 <template>
-  <div class="layout-wrapper">
-    <Menubar :model="menuItems" class="layout-menubar">
+  <div class="min-h-screen flex flex-col">
+    <Menubar :model="menuItems" class="sticky top-0 z-50">
       <template #start>
         <Button 
           icon="pi pi-bars" 
@@ -11,24 +11,24 @@
       </template>
     </Menubar>
 
-    <div class="layout-content">
-      <Sidebar v-model:visible="sidebarVisible" class="layout-sidebar">
-        <div class="p-3">
+    <div class="flex flex-1">
+      <Sidebar v-model:visible="sidebarVisible" class="w-64">
+        <div class="p-4">
           <h3 class="text-lg font-semibold mb-3">Navigation</h3>
-          <div class="flex flex-column gap-2">
+          <div class="flex flex-col gap-2">
             <Button
               v-for="link in essentialLinks"
               :key="link.title"
               :label="link.title"
               :icon="link.icon"
-              class="p-button-text p-button-plain justify-start"
+              class="p-button-text p-button-plain justify-start w-full"
               @click="navigateTo(link.link)"
             />
           </div>
         </div>
       </Sidebar>
 
-      <div class="layout-main">
+      <div class="flex-1 p-4">
         <router-view />
       </div>
     </div>
@@ -114,30 +114,3 @@ export default defineComponent({
 })
 </script>
 
-<style scoped>
-.layout-wrapper {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
-.layout-menubar {
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-}
-
-.layout-content {
-  display: flex;
-  flex: 1;
-}
-
-.layout-sidebar {
-  width: 250px;
-}
-
-.layout-main {
-  flex: 1;
-  padding: 1rem;
-}
-</style>
