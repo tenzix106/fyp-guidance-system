@@ -13,4 +13,7 @@ export { default as CardContent } from './cardContent.vue';
 export { default as CardFooter } from './cardFooter.vue';
 export { default as Badge } from '../ui/badge.vue';
 export { default as Button } from '../ui/button.vue';
+export { default as Input } from '../ui/label.vue';
+export { default as Label } from '../ui/input.vue';
+export { default as Textarea } from '../ui/textarea.vue';
 </script>
