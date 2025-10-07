@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import {ToastViewport as RadixToastViewort} from 'radix-vue';
-import { cn } from '../../../lib/utils';
+import { cn } from '../../lib/utils';
 
 interface ViewportProps {
     class?: string;

@@ -31,6 +31,39 @@ npm install
 npm run dev
 ```
 
+## Backend (Flask)
+
+A minimal Flask backend is included under `backend/` with two endpoints:
+
+- `GET /api/health` – health check
+- `POST /api/generate-fyp-ideas` – accepts `{ "profile": { "interest": string, "coursework": string, "fieldOfStudy": string, "skills": string } }` and returns `{ ideas: [], resources: [] }`.
+
+### Setup and Run (Windows PowerShell)
+
+```powershell
+cd backend
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
+pip install -r requirements.txt
+python app.py
+```
+
+The backend runs at `http://localhost:5000`.
+
+### Frontend ↔ Backend (Dev Proxy)
+
+The Vite dev server proxies `/api/*` to `http://localhost:5000`. Start both:
+
+```powershell
+# Terminal 1 (backend)
+cd backend
+.\.venv\Scripts\Activate.ps1
+python app.py
+
+# Terminal 2 (frontend)
+npm run dev
+```
+
 ### Compile and Minify for Production
 
 ```sh

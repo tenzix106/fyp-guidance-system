@@ -1,7 +1,6 @@
-<script lang="ts">
 import { createRouter, createWebHistory } from 'vue-router';
-import Index from '@/pages/Index.vue';
-import NotFound from '@/pages/NotFound.vue';
+import Index from '../../pages/Index.vue';
+import NotFound from '../../pages/NotFound.vue';
 
 const routes = [
   {
@@ -22,5 +21,4 @@ const router = createRouter({
   routes,
 });
 
-
-</script>
+export default router;

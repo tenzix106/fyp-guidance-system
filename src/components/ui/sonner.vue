@@ -1,7 +1,4 @@
 <script setup lang="ts">
-
-import { computed } from 'vue';
-import { useColorMode } from '@vueuse/core';
 import { Toaster } from 'vue-sonner';
 
 interface ToasterProps {
@@ -9,3 +6,7 @@ interface ToasterProps {
 }
 const props = defineProps<ToasterProps>();
 </script>
+
+<template>
+  <Toaster v-bind="props" />
+</template>

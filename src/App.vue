@@ -1,23 +1,16 @@
 <script setup lang="ts">
-
-import { VueQueryPlugin, QueryClient } from '@tanstack/vue-query';
-import { TooltipProvider } from '../src/components/ui/index.vue';
-import Toaster from '../src/components/ui/toastViewport.vue';
-import Sonner from '../src/components/ui/sonner.vue';
-
-const queryClient = new QueryClient();
+import { TooltipProvider } from './components/ui/index.vue';
+import Toaster from './components/ui/toastViewport.vue';
+import Sonner from './components/ui/sonner.vue';
 </script>
 
 <template>
-  <VueQueryPlugin :query-client="queryClient">
-    <TooltipProvider>
-      <Toaster>
+  <TooltipProvider>
+    <Toaster>
       <Sonner>
-
         <router-view />
       </Sonner>
-      </Toaster>
-    </TooltipProvider>
-  </VueQueryPlugin>
+    </Toaster>
+  </TooltipProvider>
 </template>
 

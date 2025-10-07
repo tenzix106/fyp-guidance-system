@@ -1,6 +1,6 @@
-<script lang="ts">
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../../src/components/ui/index.vue';
-import { Badge } from '../../src/components/ui/index.vue';
+<script setup lang="ts">
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/index.vue';
+import { Badge } from './ui/index.vue';
 import { Lightbulb, TrendingUp, Code, Award  } from 'lucide-vue-next';
 import { ProjectIdea } from '../../pages/Index.vue';
 
@@ -25,67 +25,69 @@ const getDifficultyColor = (difficulty: string) => {
 </script>
 
 <template>
-    <section className="animate-fade-in">
-      <div className="mb-8 text-center">
-        <h2 className="mb-3 flex items-center justify-center gap-2 text-3xl font-bold">
-          <Lightbulb className="h-8 w-8 text-accent" />
+    <section class="animate-fade-in">
+      <div class="mb-8 text-center">
+        <h2 class="mb-3 flex items-center justify-center gap-2 text-3xl font-bold">
+          <Lightbulb class="h-8 w-8 text-accent" />
           Your Personalized Project Ideas
         </h2>
-        <p className="text-muted-foreground">
+        <p class="text-muted-foreground">
           AI-generated suggestions tailored to your profile
         </p>
       </div>
 
-      <div className="grid gap-6 md:grid-cols-2">
-        {ideas.map((idea, index) => (
-          <Card 
-            key={idea.id} 
-            className="group overflow-hidden border-2 transition-all hover:border-primary hover:shadow-lg animate-scale-in"
-            style={{ animationDelay: `${index * 100}ms` }}
-          >
-            <CardHeader>
-              <div className="mb-3 flex items-start justify-between">
-                <Badge className={getDifficultyColor(idea.difficulty)}>
-                  {idea.difficulty}
+      <div class="grid gap-6 md:grid-cols-2">
+        <Card 
+          v-for="(idea, index) in ideas"
+          :key="idea.id" 
+          class="group overflow-hidden border-2 transition-all hover:border-primary hover:shadow-lg animate-scale-in"
+          :style="{ animationDelay: `${index * 100}ms` }"
+        >
+          <CardHeader>
+            <div class="mb-3 flex items-start justify-between">
+              <Badge :class="getDifficultyColor(idea.difficulty)">
+                {{ idea.difficulty }}
+              </Badge>
+              <Badge variant="outline" class="bg-gradient-accent text-accent-foreground">
+                {{ idea.category }}
+              </Badge>
+            </div>
+            <CardTitle class="text-xl group-hover:text-primary transition-colors">
+              {{ idea.title }}
+            </CardTitle>
+            <CardDescription class="text-base">
+              {{ idea.description }}
+            </CardDescription>
+          </CardHeader>
+          <CardContent class="space-y-4">
+            <div>
+              <div class="mb-2 flex items-center gap-2 text-sm font-semibold">
+                <Code class="h-4 w-4 text-primary" />
+                Required Skills
+              </div>
+              <div class="flex flex-wrap gap-2">
+                <Badge 
+                  v-for="(skill, idx) in idea.requiredSkills"
+                  :key="idx" 
+                  variant="secondary" 
+                  class="text-xs"
+                >
+                  {{ skill }}
                 </Badge>
-                <Badge variant="outline" className="bg-gradient-accent text-accent-foreground">
-                  {idea.category}
-                </Badge>
               </div>
-              <CardTitle className="text-xl group-hover:text-primary transition-colors">
-                {idea.title}
-              </CardTitle>
-              <CardDescription className="text-base">
-                {idea.description}
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <div>
-                <div className="mb-2 flex items-center gap-2 text-sm font-semibold">
-                  <Code className="h-4 w-4 text-primary" />
-                  Required Skills
-                </div>
-                <div className="flex flex-wrap gap-2">
-                  {idea.requiredSkills.map((skill, idx) => (
-                    <Badge key={idx} variant="secondary" className="text-xs">
-                      {skill}
-                    </Badge>
-                  ))}
-                </div>
+            </div>
+            
+            <div>
+              <div class="mb-2 flex items-center gap-2 text-sm font-semibold">
+                <TrendingUp class="h-4 w-4 text-accent" />
+                Potential Impact
               </div>
-              
-              <div>
-                <div className="mb-2 flex items-center gap-2 text-sm font-semibold">
-                  <TrendingUp className="h-4 w-4 text-accent" />
-                  Potential Impact
-                </div>
-                <p className="text-sm text-muted-foreground">
-                  {idea.potentialImpact}
-                </p>
-              </div>
-            </CardContent>
-          </Card>
-        ))}
+              <p class="text-sm text-muted-foreground">
+                {{ idea.potentialImpact }}
+              </p>
+            </div>
+          </CardContent>
+        </Card>
       </div>
     </section>
 </template>
